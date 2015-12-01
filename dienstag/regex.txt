@@ -7,14 +7,26 @@ $		Ende der Zeile
 r*		beliebige Anzahl von Regex r
 r+		mindestens 1 mal von Regex r
 r?		einmal oder Keinmal
+r{n}		r genau n mal
+r{n,m}		r mal bis m mal
+(r)		Gruppierung
+r1|r2		r1 oder r2 muß matchen
 
+\s		Whitespace Zeichen, eins \S
+\d		Digit, eins \D
 
 
 Beispiele:
 
-^ab		ab muss am Anfang der Zeile stehen
-yz$		yz muss am Ende der Zeile stehen
-.*		beliebige Zeichen beliebig oft
-(ab)*		ab beliebig of, z.B. ababababab
-[ab]*		a und b beliebig oft, z.B. aaaabbbbabaaaba
-Claa?s		matcht auf Clas, Claas, nicht aber auf Claaas
+^ab				ab muss am Anfang der Zeile stehen
+yz$				yz muss am Ende der Zeile stehen
+.*				beliebige Zeichen beliebig oft
+(ab)*				ab beliebig of, z.B. ababababab
+[ab]*				a und b beliebig oft, z.B. aaaabbbbabaaaba
+Claa?s				matcht auf Clas, Claas, nicht aber auf Claaas
+Cla(a)?s			matcht auf Clas, Claas, nicht aber auf Claaas
+Claaas
+(aa)?
+[KC]la[au]s			Klaus, Claus, Klaas, Claas
+M(ai|ay|ey|ei)er		Maier, Meyer, Meier, Mayer
+(M(ai|ay|ey|ei)er|Schult?ze?)	zusaetzlich Schulz, Schultz, Schulze, Schultze
