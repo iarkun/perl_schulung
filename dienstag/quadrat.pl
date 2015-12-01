@@ -17,5 +17,8 @@ foreach $var (@liste) {
 	
 }
 
-printf "Liste: %s\n", $_ foreach @liste;
-printf "Quadrate: %s\n", $_ foreach @quadrate;
+#Kurzform
+#push (@quadrate_zwei, $_*$_) foreach @liste;
+
+#printf "Liste: %s\n", $_ foreach @liste;
+#printf "Quadrate: %s\n", $_ foreach @quadrate;
