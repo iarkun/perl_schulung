@@ -1,0 +1,20 @@
+^		Anfang der Zeile
+$		Ende der Zeile
+
+[abc]		Zeichengruppe a,b,c
+[^abc]		Zeichengruppe bis auf a,b,c
+.		1 beliebiges Zeichen [\. für Punkt]
+r*		beliebige Anzahl von Regex r
+r+		mindestens 1 mal von Regex r
+r?		einmal oder Keinmal
+
+
+
+Beispiele:
+
+^ab		ab muss am Anfang der Zeile stehen
+yz$		yz muss am Ende der Zeile stehen
+.*		beliebige Zeichen beliebig oft
+(ab)*		ab beliebig of, z.B. ababababab
+[ab]*		a und b beliebig oft, z.B. aaaabbbbabaaaba
+Claa?s		matcht auf Clas, Claas, nicht aber auf Claaas
