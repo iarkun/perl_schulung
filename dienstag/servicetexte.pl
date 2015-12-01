@@ -25,7 +25,7 @@ sub print_service
 			#Wegen Gruppierung () in $1 gespeichert
 		$	#...Bis zum Ende der Zeile
 		/x;	#Extended RegEX
-#.*?#s*(.*)$
+#^[^#].*?#s*(.*)$
 #  ^[^#][^#]*#\s*(.*)$
   printf "%s\n", $1;
 #  printf "%s\n", $line;
