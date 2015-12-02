@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use Data::Dumper;
 
 sub userliste
 {
@@ -19,6 +20,7 @@ sub userliste
 		'realname' => $info[4],
 		'homedir' => $info[5],
 		'shell' => $info[6]};
+  print Dumper $userinfo;
   push @liste, $userinfo;
  }
  close $fh;
