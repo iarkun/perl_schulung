@@ -16,7 +16,7 @@ sub read_page {
 	my $ua = LWP::UserAgent->new;
 	$ua->agent('Wget/1.0.10');
   
-  	print STDERR $url."\n";
+#  	print STDERR $url."\n";
 	
 	my $response = $ua->get($url);
 
@@ -30,15 +30,17 @@ sub read_page {
 
 sub parse_page{
 	my $content = shift;
-	####UTF Convert
-	my $converter = Text::Iconv->new('utf8', 'utf8');
-	
+	# Warnung: Intern wird bei Verwendung von Text::Iconv automatisch
+	# latin1 nach utf8 konvertiert, daher muss bei der offiziellen
+	# Konvertierung die gleiche Kodierung bei from und to angegeben werden
+	my $converter = Text::Iconv->new('latin1', 'latin1');
 	my @liste;
 	# $content an Zeilenumbruch auftrennen
 	foreach (split /\n/, $content) {
-	next unless m!<div class="box_adress"><h2>([^<]+)</h2>!;
-#	push @liste, $1;	# $1 aus der Gruppierung im RegEx
-	push @liste, $converter->convert($1);	# $1 aus der Gruppierung im RegEx
+		next unless m!<div class="box_adress"><h2>([^<]+)</h2>!;
+		#push @liste, $1;	# $1 aus der Gruppierung im RegEx
+		#Konvertierte Form wird in das Array geladen
+		push @liste, $converter->convert($1);	# $1 aus der Gruppierung im RegEx
 	}
 	return @liste;
 }
@@ -48,7 +50,7 @@ my $today = today_german;
 #my $url2 = qq{http://www.aponet.de/service/notdienstapotheke-finden/suchergebnis/$today/55469%2BSimmern%252FHunsr%25C3%25BCck/-/50.html?as=0};
 my $url = qq{http://www.aponet.de/service/notdienstapotheke-finden/suchergebnis/$today/55469%2Bsimmern.html};
 my $page = read_page $url;
-print "Seite geladen\n" if $page;
+#print "Seite geladen\n" if $page;
 die "Seite konnte nicht geladen werden\n" unless $page;
 #print $page;
 my @notdienste = parse_page $page;
