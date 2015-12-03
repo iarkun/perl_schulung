@@ -12,4 +12,10 @@ sub new {
   bless $data, $class;
 }
 
+sub get_name{
+
+  my $self = shift;
+  return $self->{'name'};
+}
+
 1; # Make Perl happy
