@@ -1,0 +1,247 @@
+Willkommen zum Linuxhotel Etherpad. Wir empfehlen, hier zu Beginn des Kurses die Kursagenda von der Kursbeschreibung auf der Webseite hier per copy&paste hinein zu kopieren
+Ausführbare Programme unter Unix - GNU/Linux
+
+    Shebang-Zeile legt Interpreter fest
+
+    Suchpfad PATH (Default: /usr/local/bin:/usr/bin:/bin, ggf. mehr)
+
+    Execution-Flag muss gesetzt sein, Befehl dazu: chmod + x datei
+
+VI-Grundkurs
+
+    Einfache Hilfe: vi-Tasse oder vi Cheatsheet
+
+    :w   Speichern
+
+    :wq  Speichern und verlassen ( oder ZZ - Klugscheißen)
+
+    Zeilennummern:  :set numbers (:set nu)     ausschalten mit :set nonumbers bzw. :set nonu
+
+    Befehlen kann eine Zahl vorangestellt werden, der Befehl wird dann entsprechend häufig ausgeführt
+
+    z.B. 4k um 4 Zeilen nach oben zu gehen, oder 10i-<ESC>, um 10 Bindestriche zu schreiben
+
+    Syntax-Highlighting ein/aus  :syntax on / :syntax off
+
+    Cursortasten im Command-Modus: hjkl
+
+    :e dateiname laedt dateiname als neue Datei
+
+    Shift-Y  Zeile "yanken", = in den internen Puffer kopieren
+
+    p   nach aktueller Cursor-Position einfügen, Shift-P   vor aktueller Cursorposition einfügen
+
+    v   visual Mode, hier kann mit Cursor-Tasten markiert werden, was anschließend geyankt oder gelöscht wird
+
+    Shift-v  visual Mode zeilenweise
+
+    Ctrl-v  visual Mode blockweise
+
+    y  Markierten Bereich yanken (in internen Puffe kopieren)
+
+    x Markierten Bereich ausschneiden und in den internen Puffer kopieren
+
+    r<zeichen>   1 Zeichen durch <zeichen> ersetzen
+
+Perl-Grundlagen
+
+    Skalare Variablen $name
+
+    Unterscheidung zwischen Gross- und Kleinbuchstaben
+
+    Skalare Variablen werden automatisch in passende Subtypen konvertiert, Int, Float, String, 10 und "10" sind damit gleichbedeutend
+
+    0 entspricht Logisch False, alles ungleich False entspricht logisch True (sonst 0 und 1)
+
+Skalarer Datentyp
+
+    Notierungszeichen $, also $name
+
+    Speicher für Zeichenketten, Zahlen (Ganzzahl und Fließkomma) und Referenzen
+
+Arrays
+
+    Sortierte Liste skalarer Werte (Sortiert auf Basis des numerischen Indizes)
+
+    Besonderheit in Perl: Das Array wächst automatisch, wenn Elemente geschrieben werden, ggf. wird mit undef als Wert aufgefüllt
+
+    Notierungszeichen @, also @liste
+
+    Initialisierung mit @liste = (1,2,3,4,5,6)
+
+    Zugriff auf einzelne Elemente $list[numerischer index]
+
+    Skalarer Kontext oder Listen-Kontext?
+
+    Im skalaren Kontext wird aus dem Array die Länge des Arrays
+
+    Im Listen-Kontext erhält man alle Array-Elemente
+
+    $#name  - Höchster Array-Index oder -1   bzw. Länge des Arrays minus 1
+
+    scalar @name - Länge des Arrays
+
+    push fügt Element(e) ans Ende an, pop holt ein Element vom Ende weg
+
+    unshift fügt Element(e) am Anfang hinzu, shift holt das erste Element vom Anfang weg
+
+    pop und shift reduzieren die Liste, bis sie leer ist, und geben dann undef zurück
+
+    splice Liste, Offset, Länge,Werteliste  - ersetzt in Liste ab Position Offset Anzahl Länge Elemente durch die Werte in Werteliste
+
+    Durchlaufen des Arrays mit foreach my $laufvar (@liste) { Anweisungen; }
+
+    Sonderfall Anweisung($_) foreach @liste    - Schleifenvariable implizit $_
+
+Hashes bzw. Assoziative Arrays
+
+    Key-Value-Paare, Value muß ein Skalar sein
+
+    Index ist ein String, nicht mehr numerisch
+
+    Keine Lücken mehr bei Zuweisungen wie beim Array
+
+    Keine Sortierung
+
+    Notierungszeichen %, also %hash
+
+    Zugriff auf einzelne Werte mit $hash{key}
+
+    Alle Keys als Array: keys %hash
+
+    Alle Values als Array: values %hash
+
+    Schleifen meistens mit foreach keys %hash bzw. foreach values %hash
+
+    Hash-Element löschen mit der Funktion delete
+
+Referenzen
+
+    $scalar_ref = \$scalar                                                  $$scalar_ref
+
+    $array_ref = \@liste                $array_ref->[0]           @{$array_ref}                 $aref = [1,2,3]
+
+    $hash_ref = \%hash              $hash_ref->{"E"}        %{$hash_ref}                 $href = {"E" => "Essen"}
+
+    Besonderheit: Wenn 1x dereferenziert wird mit -> können die weiteren Pfeile wegfallen
+
+Dateitest-Operatoren
+
+    ca. Seite 115 im Buch
+
+Printf
+
+    printf         = printformatet
+
+    printf         <formatstr.> <Liste>
+
+    sprintf          -  gibt eine formatierte Zeichenkette zurück, um damit weiter zu         arbeiten
+
+    %s        String
+
+    %10s        wie                 %s, 10 Zeichen breit und rechtsbündig
+
+    %-10s        wie                 %s, 10 Zeichen breit und linksbündig
+
+    %.10s        wie                 %s, 10 Zeichen breit und es wird nach 10 Zeichen abgeschnitten
+
+    %d        Digits         (eine Zahl → wird der Reihe nach abgearbeitet)
+
+    %5d        wie                 %d, 5 Zeichen breit und rechtsbündig
+
+    %-5d        wie                 %d, 5 Zeichen breit und linksbündig
+
+    %.08d        wie                 %d, 8 Zeichen breit, links wird mit Nullen aufgefüllt, da                 rechtsbündig
+
+→ Bsp: Kontonummern
+
+    %f        Floating         Point Values (Kommazahl)
+
+    %5f        wie                 %f, 5 Zeichen breit und rechtsbündig
+
+    %6.2f        wie                 %f, insgesamt 6 Zeichen breit und zwei nach dem Komma
+
+    %.08f        wie                 %f, 8 Zeichen breit, links wird mit Nullen aufgefüllt, da                 rechtsbündig
+
+→ Bsp: Geldbeträge 
+
+    %x        Hexadezimale         Darstellung
+
+    %5x        wie                 %f, 5 Zeichen breit und rechtsbündig
+
+    %08x        wie                 %f, 8 Zeichen breit, links wird mit Nullen aufgefüllt, da                 rechtsbündig
+
+    %%        Prozentzeichen         (Bsp: %d%% → 12%)
+
+Reguläre Ausdrücke
+http://xkcd.com/208/
+^                Anfang der Zeile
+^ab           ab muss am Anfang der Zeile stehen
+$               Zeilenende
+yz$            yz muss am Ende der Zeile stehen
+[abc]         matchen eines Elementes aus der Zeichengruppe → Bsp. [0-9a-z]
+[^abc]       matchen eines Elementes, das NICHT in der Zeichengruppe enthalten ist → Bsp. [^a-z0-9]
+.                ein beliebiges Zeichen
+.*               beliebiges Zeichen, beliebig oft
+(ab)*         ab beliebig oft, z.B. ababababab
+[ab]*          a oder b kann beliebig oft vorkommen
+r1|r2          r1 oder r2 muss matchen
+(r)              Gruppierung
+[KC]la[au]s                                       Klaus, Claus, Klaas, Claas
+M(ai|ay|ey|ei)er                                Maier, Meyer, Meier, Mayer
+(M(ai|ay|ey|ei)er|Schult?ze?)        Maier, Meyer, Meier, Mayer, Schulz, Schultz, Schulze, Schultze
+r*               beliebig viele Zeichen von r
+r+              mindestens einmal r
+r?              einmal oder keinmal
+r                genau ein r
+r{n}            r genau n mal
+r{n,m}       r genau n mal, maximal m mal
+Claa?s    matcht auf Clas, Claas, aber nicht Claaas (Begrenzung auf ein Zeichen)
+Cla(a)?s  matcht auf Clas, Claas, aber nicht Claaas (Begrenzung auf ein Zeichen)
+\s               ein Leerzeichen
+\s*             beliebig viele Leerzeichen
+\S              alles ohne Leerzeichen
+\d               ein Digit / Zahl
+\D              alles ohne digit / Zahl
+Arbeit mit Datenbanken
+
+    Verbindung zu Datenbanken über allgemeine Schnittstelle DBI
+
+    Beispiel PostgreSQL --> sudo apt-get install postgresql
+
+    Bibliothek in Perl: DBI --> sudo apt-get install libdbi-perl
+
+    Konkrete Verbindung zu PostgreSQL --> sudo apt-get install libdbd-pg-perl
+
+    Zugangsberechtigungen in /etc/postgresql/9.4/main/pg_hba.conf
+
+    psql db24 < ../scheme.sql
+
+Grafische Schnittstelle
+
+    sudo apt-get install libgtk2-perl
+
+    scp nutzer24@notebook24:lib*.deb .
+
+    sudo dpkg -i lib*.deb
+
+    sudo apt-get install libcanberra-gtk-module
+
+scp nutzer24@notebook24:cd_* .
+Themen Nachbesprechen:
+
+    Variablen-Scope (my oder nicht)
+
+    Automatisierte Festplattenkonfiguration (Linux: Anhand Scsi ID in VG aufnehmen und LV anlegen)
+
+    Schwartz'sche Transformation
+
+    Logdatei parsen
+
+Wunschbeispiel: Seite www.lak-rlp.de den Notdienst parsen für eine bestimmte PLZ und einen bestimmten Tag (nacheinander für die kommenden 14 Tage)
+z.B.: http://www.lak-rlp.de/notdienstportal/schnellsuche/?location=55469&date=04.12.2015
+http://lak-rlp.notdienst-portal.de/lakrlpportal/schnellsuche/ergebnis/jsonp?jsonp=jQuery1640033118349636188316_1449142617006&date=1449183600000&lat=49.9895078&lon=7.5462508000000525&location=55469&key=a5e1d678128ff58f4e3f76fbce5ca6aa&clientKey=619aef764f041d16245d165b8600870a&host=www.lak-rlp.de&port=&handleMaxDiff=true&_=1449143007132
+http://www.aponet.de/service/notdienstapotheke-finden/suchergebnis/0/55469%2BSimmern%252FHunsr%25C3%25BCck/-/50.html?as=0
+http://www.aponet.de/service/notdienstapotheke-finden/suchergebnis/0/55469%2Bsimmern.html}
+                                                                                                                               ^--- Deutsches Datum
+
