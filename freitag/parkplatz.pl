@@ -25,6 +25,7 @@ printf "Der Name lautet %s\n", $kopie->get_name();
 print Dumper $kopie;
 $kopie->set_name('Ilyas');
 printf "Der Name lautet %s\n", $kopie->get_name();
+$kopie = undef; # Objekt freigegeben
 
 my $cooper = Mini->new('Coop');
 printf "Mini Cooper mit Name %s\n", $cooper->get_name();

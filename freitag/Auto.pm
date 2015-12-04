@@ -24,6 +24,10 @@ sub set_name
   $self->{'name'} = shift;
 }
 
+# DESTROY wird automatisch von Perl als letzte Funktion aufgerufen, wenn
+# der Speicherplatz wieder freigegeben wird. Existiert sie nicht, ist
+# das auch ok.
+
 sub DESTROY
 {
   my $self = shift;
